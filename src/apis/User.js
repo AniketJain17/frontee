@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { handleApiRes, handleApiErr } from '../utils/apiUtils';
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
-export const userLoginApi = async (userData) => {
+export const userLoginApi = async (userData,navigate) => {
     try {
         const response = await axios.post(`${baseURL}/user/login`, userData);
 
@@ -18,7 +18,7 @@ export const userLoginApi = async (userData) => {
     }
 };
 
-export const userRegisterApi = async (userData) => {
+export const userRegisterApi = async (userData,navigate) => {
     try {
         const response = await axios.post(`${baseURL}/user/register`, userData);
 
@@ -34,7 +34,7 @@ export const userRegisterApi = async (userData) => {
     }
 };
 
-export const userUpdateApi = async (userData, token) => {
+export const userUpdateApi = async (userData, token,navigate) => {
     try {
         const response = await axios.post(`${baseURL}/user/update`, userData, {
             headers: { Authorization: `Bearer ${token}` }
@@ -52,7 +52,7 @@ export const userUpdateApi = async (userData, token) => {
     }
 };
 
-export const userDashboardApi = async (token) => {
+export const userDashboardApi = async (token,navigate) => {
     try {
         const response = await axios.get(`${baseURL}/user/dashboard`, {
             headers: { Authorization: `Bearer ${token}` }

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { handleApiRes, handleApiErr } from '../utils/apiUtils';
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
-export const createFormApi = async (folderId, formName, token) => {
+export const createFormApi = async (folderId, formName, token,navigate) => {
     try {
         const response = await axios.post(`${baseURL}/form/create`, { folderId, formName }, {
             headers: { Authorization: `Bearer ${token}` }
@@ -20,7 +20,7 @@ export const createFormApi = async (folderId, formName, token) => {
     }
 };
 
-export const fetchAllFormApi = async (token) => {
+export const fetchAllFormApi = async (token,navigate) => {
     try {
         const response = await axios.get(`${baseURL}/form/view`, {
             headers: { Authorization: `Bearer ${token}` }
@@ -37,7 +37,7 @@ export const fetchAllFormApi = async (token) => {
     }
 };
 
-export const fetchFormByIdApi = async (formId, token) => {
+export const fetchFormByIdApi = async (formId, token,navigate) => {
     try {
         const response = await axios.get(`${baseURL}/form/view/${formId}`, {
             headers: { Authorization: `Bearer ${token}` }
@@ -54,7 +54,7 @@ export const fetchFormByIdApi = async (formId, token) => {
     }
 };
 
-export const updateFormApi = async (formId, formData, token) => {
+export const updateFormApi = async (formId, formData, token,navigate) => {
     try {
         const response = await axios.patch(`${baseURL}/form/update/${formId}`, formData, {
             headers: { Authorization: `Bearer ${token}` }
@@ -71,7 +71,7 @@ export const updateFormApi = async (formId, formData, token) => {
     }
 };
 
-export const deleteFormApi = async (formId, token) => {
+export const deleteFormApi = async (formId, token,navigate) => {
     try {
         const response = await axios.delete(`${baseURL}/form/delete/${formId}`, {
             headers: { Authorization: `Bearer ${token}` }

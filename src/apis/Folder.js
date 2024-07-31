@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { handleApiRes, handleApiErr } from '../utils/apiUtils';
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
-export const createFolderApi = async (folderName, token) => {
+export const createFolderApi = async (folderName, token,navigate) => {
     try {
         const response = await axios.post(`${baseURL}/folder/create`, { folderName }, {
             headers: { Authorization: `Bearer ${token}` }
@@ -21,7 +21,7 @@ export const createFolderApi = async (folderName, token) => {
     }
 };
 
-export const fetchAllFolderApi = async (token) => {
+export const fetchAllFolderApi = async (token,navigate) => {
     try {
         const response = await axios.get(`${baseURL}/folder/view`, {
             headers: { Authorization: `Bearer ${token}` }
@@ -38,7 +38,7 @@ export const fetchAllFolderApi = async (token) => {
     }
 };
 
-export const fetchAllFormByFolderApi = async (folderId, token) => {
+export const fetchAllFormByFolderApi = async (folderId, token,navigate) => {
     try {
         const response = await axios.get(`${baseURL}/folder/view/${folderId}`, {
             headers: { Authorization: `Bearer ${token}` }
@@ -55,7 +55,7 @@ export const fetchAllFormByFolderApi = async (folderId, token) => {
     }
 };
 
-export const deleteFolderApi = async (folderId, token) => {
+export const deleteFolderApi = async (folderId, token,navigate) => {
     try {
         const response = await axios.delete(`${baseURL}/folder/delete/${folderId}`, {
             headers: { Authorization: `Bearer ${token}` }
